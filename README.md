@@ -1,3 +1,31 @@
+## Steps i've done!
+
+### Part 1 Critical rendering path
+
+Used ngrok and page speed insights for testing and checking and finally came to this.
+
+1. removed the link to google font while it was render blocking
+2. added font ref to style.css
+3. read this <a href="http://www.filamentgroup.com/lab/font-events.html">article</a>
+4. used <a href="https://github.com/bramstein/fontfaceobserver">this</a> script and added custom script to observe the font
+5. minified it online <a href="http://jscompress.com/">here</a> and added it inline in index.html
+6. used <a href="http://cssminifier.com/">css minifier</a> and inlined total css in the head
+7. made google analytics script async by changing the script
+8. made perfmatters.js script async
+9. added media="print" to print.css to remove it from crp
+10. minified print.css via <a href="http://cssminifier.com/">css minifier</a>
+11. minified the html via htmlmin as a gulp task
+
+#### to make it better
+
+1. testing inline script vs references
+2. test and work with http cashing.
+
+### 60 frames per second
+
+
+
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
@@ -32,7 +60,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
