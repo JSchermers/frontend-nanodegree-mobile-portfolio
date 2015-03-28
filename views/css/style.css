@@ -31,13 +31,34 @@ form {
 
 .mover {
   position: fixed;
-  width: 256px;
   z-index: -1;
+  /* removed height and width from javascript and replaced the width */
+  height: 100px;
+  width: 73.333px;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  width: 33.33%;/*removed width and height from main.js.*/
+  height: 325px;
+}
+
+/*Added for the optimization purposes*/
+.pizza-small {
+  width:25%;
+}
+
+.pizza-medium {
+  width:33.33%;
+}
+
+.pizza-large {
+  width:50%;
 }
 
 .randomPizzaContainer:after {
