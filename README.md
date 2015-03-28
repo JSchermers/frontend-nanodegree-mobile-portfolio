@@ -10,7 +10,7 @@ Screenshots of pagespeed are in root project directory. mobile-result.png & desk
 
 ### Part 1 Critical rendering path
 
-Used ngrok and page speed insights for testing and checking and finally came to this.
+Used ngrok and page speed insights for testing and checking and finally came to this.. Finalized files in /dist.
 
 1. removed the link to google font while it was render blocking
 2. added font ref to style.css
