@@ -1,6 +1,6 @@
 ## to Run!
 
-optimized index.html, js, css and img are in /dist
+optimized index.html, js, css and img are in /dist. Run gulp default task
 
 use localhost:[portnumber]/dist/index.html
 
