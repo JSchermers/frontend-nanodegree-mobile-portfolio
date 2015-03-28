@@ -18,7 +18,7 @@ gulp.task('compress',['clean'], function() {
 });
 
 gulp.task('cssmin',['clean'], function () {
-    var stream = gulp.src('css/print.css')
+    var stream = gulp.src('css/*.css')
         .pipe(cssmin())
 
         .pipe(gulp.dest('dist/css'));
