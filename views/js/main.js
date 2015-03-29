@@ -141,6 +141,10 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
+//helper for changing pizzaClass
+pizzaHelper = {
+  pizzaOldSize: 'pizza-medium'
+}
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
@@ -424,11 +428,19 @@ var resizePizzas = function(size) {
     default:
       console.log("bug in changeSliderLabel");
   }
-
   // assign appropriate class to pizzas
   for (var i = 0; i < randomPizzaContainersLength ; i++) {
+    // Check if element contains the specific size class
+    if (randomPizzaContainers[i].classList.contains(pizzaHelper.pizzaOldSize))
+    {
+      //remove old class
+      randomPizzaContainers[i].classList.remove(pizzaHelper.pizzaOldSize)
+    }
+    //set new class
     randomPizzaContainers[i].classList.add(pizzaSize);
   }
+  //set new pizzaClass
+  pizzaHelper.pizzaOldSize = pizzaSize;
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
