@@ -29,6 +29,13 @@ form {
   font-weight: 800;
 }
 
+/* added class so javascript translate works on position fixed with position absolute */
+.movingPizzas1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .mover {
   position: fixed;
   z-index: -1;

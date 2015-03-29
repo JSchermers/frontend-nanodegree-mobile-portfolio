@@ -141,9 +141,28 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
-//helper for changing pizzaClass
+//helper for global function
 pizzaHelper = {
-  pizzaOldSize: 'pizza-medium'
+  pizzaOldSize: 'pizza-medium',
+  createPizzaImages : function() {
+    var cols = 8,
+      s = 256,
+      screenHeight = window.screen.height,
+      totalPizzas = screenHeight / s * cols;
+
+    for (var i = 0; i < totalPizzas; i++) {
+      var elem = document.createElement('img');
+      elem.className = 'mover';
+      elem.src = "images/pizza.png";
+      // moved css styles to css file
+      // store left element position
+      elem.basicLeft = (i % cols) * s;
+      // store top element position
+      elem.topCss = (Math.floor(i / cols) * s) + 'px';
+      // get only one element instead of all
+      document.getElementById("movingPizzas1").appendChild(elem);
+    }
+}
 }
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
@@ -484,20 +503,21 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
-// moved out of function so it's not called every time
-var items = document.querySelectorAll('.mover'),
-    itemsLength = items.length,
-    scrollPosition = document.body.scrollTop / 1250;
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-
-  for (var i = 0; i < itemsLength; i++) {
-    var phase = Math.sin((scrollPosition) + (i % 5));
-    items[i].style.transform  = "translateX ("+ items[i].basicLeft + 100 * phase + 'px'+")";
+  // get all mover items
+  var items = document.querySelectorAll('.mover'),
+      leftStyle = '';
+  // moved scrollTop out of the loop
+  var phase  = document.body.scrollTop/1250;
+  for (var i = 0; i < items.length; i++) {
+      leftStyle = items[i].basicLeft + 100 * Math.sin( phase+(i % 5) )  + 'px';
+      // used translate to position the image to increase framerate
+      items[i].style.transform = "translateX(" + leftStyle + ") translateY(" + items[i].topCss + ")";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -514,19 +534,8 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
-  }
-  updatePositions();
-});
+// create seperate function
+document.addEventListener('DOMContentLoaded', pizzaHelper.createPizzaImages);
 
 document.getElementById('sizeSlider').addEventListener('change', function(){
   resizePizzas(this.value);

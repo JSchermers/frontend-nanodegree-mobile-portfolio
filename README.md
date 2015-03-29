@@ -40,7 +40,8 @@ Used ngrok and page speed insights for testing and checking and finally came to 
 5. refreshed the browser , started recording and scrolled many times.
 6. i noticed a lot of recalculate style and was because of the scroll event and DOM manipulation however some frame rates were closer to 30 than to 60 so i needed more investigation
 7. added native styles to css and removed from main.js
-8. used transform to position the .mover element (only transform not specific browser implementations)
+8. used transform to position the .mover element (only transform not specific browser implementations). + added some css
 9. moved dom manipultation out of loops
 10. investigated the timeline data again and noticed i was more close to 60fps. However in some details were i was not i noticed 2 paints happening for big sizes. I tried some things but did not find a solution for that problem.
+11 recreate the event after domContentLoaded for adding the images.
 
