@@ -427,7 +427,7 @@ var resizePizzas = function(size) {
 
   // assign appropriate class to pizzas
   for (var i = 0; i < randomPizzaContainersLength ; i++) {
-    randomPizzaContainerElem[i].classList.add(pizzaSize);
+    randomPizzaContainers[i].classList.add(pizzaSize);
   }
 
   // User Timing API is awesome
